@@ -21,8 +21,8 @@ class MyJPanelSun extends JPanel {
 	static int leapYEarth = 0;
 	static int leapXMoon = 0;
 	static int leapYMoon = 0;
-	static int xOdlegloscSZ;
-	static int xOdlegloscZM;
+	static int xDistanceSunEarth;
+	static int xDistanceEarthMoon;
 	static int showDay = 0;
 	static int years = 0;
 	static int degreeOfEarth = 360;
@@ -81,24 +81,24 @@ class MyJPanelSun extends JPanel {
 		int xCenterEarth = xCenterSun + xCenterSun / 2 + widthEarth / 2;
 		int xCenterEarthRunning = xCenterSun + leapXEarth; // we will need that for moon to move
 		int yCenterEarthRunning = yCenterSun + leapYEarth - yCenterSun / 2;
-		xOdlegloscSZ = xCenterEarth - xCenterSun;
+		xDistanceSunEarth = xCenterEarth - xCenterSun;
 		// Moon
 		int widthMoon = this.getWidth() / 16;
 		int heightMoon = this.getHeight() / 16; // we need a square
 		int xCenterMoon = xCenterEarth + widthEarth;
 		int xCenterMoonRunning = xCenterEarthRunning + leapXMoon; // MOON
 		int yCenterMoonRunning = yCenterEarthRunning + leapYMoon;
-		xOdlegloscZM = xCenterMoon - xCenterEarth;
+		xDistanceEarthMoon = xCenterMoon - xCenterEarth;
 
 		super.paintComponent(g);
 
 		try {
-			BufferedImage cosmos = ImageIO.read(new File("C:\\Users\\Vovul\\Desktop\\symulacja\\cosmos.jpg"));
-			BufferedImage earth = ImageIO.read(new File("C:\\Users\\Vovul\\Desktop\\symulacja\\earth.png"));
-			BufferedImage moon = ImageIO.read(new File("C:\\Users\\Vovul\\Desktop\\symulacja\\moon.png"));
+			BufferedImage cosmos = ImageIO.read(new File("images\\cosmos.jpg"));
+			BufferedImage earth = ImageIO.read(new File("images\\earth.png"));
+			BufferedImage moon = ImageIO.read(new File("images\\moon.png"));
 
 			g.drawImage(cosmos, 0, 0, this.getWidth(), this.getHeight(), null);
-			ImageIcon imgIconSun = new ImageIcon("C:\\Users\\Vovul\\Desktop\\symulacja\\sunGif.gif");
+			ImageIcon imgIconSun = new ImageIcon("images\\sunGif.gif");
 			JLabel label = new JLabel(imgIconSun);
 			label.setBounds(xStartSun-45, yStartSun-45, widthSun+90, heightSun+90);
 			add(label);
